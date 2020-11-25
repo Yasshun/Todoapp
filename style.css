@@ -100,13 +100,40 @@ h1 {
   margin-top: 80px;
 }
 
+form {
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+
+}
+
+#add-task{
+  border: 2px solid #222222;
+  padding: 5px 10px;
+}
+
+#add-button {
+  border: 2px solid #222222;
+  color: white;
+  background-color: #0066cc;
+  font-size: 15px;
+  border-radius: 10%;
+}
+
+#add-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+
+}
+
+
 table { 
     table-layout: fixed;
     width: 60%;
     font-size: 20px;
     border-collapse: collapse;
     border: 3px solid black;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
     line-height: 35px;
@@ -121,6 +148,7 @@ table thead tr th {
 table tbody tr td {
   text-align: center;
   border-left: 3px solid black;
+  border-bottom: 3px solid black;
 
 }
 
@@ -136,8 +164,15 @@ table tbody tr td  a:hover {
 
 }
 
+#nocontents {
+  font-size: 20px;
+  margin-top: 20px;
+  text-align: center;
+
+
+}
+
 #modal {
-  /* display: block; */
   background-color: white;
   height: 135px;
   position: absolute;
@@ -153,33 +188,43 @@ table tbody tr td  a:hover {
 
 }
 
+
+
 #modal > input {
     display: block;
     margin-left: auto;
     margin-right: auto;
   /* text-align: center; */
-  margin-top: 30px;
+   margin-top: 30px;
 
 }
 
 
-.modal-button {
+
+.modal-contents {
   text-align: center;
   margin-top: 15px;
 
 
 }
 
+#edit {
+  color: white;
+  background-color: #006600;
+  border-radius: 5px;
+  border: none;
+
+}
 
 
 
 #delete {
-  cursor: pointer;
+  text-align: center;
   color: white;
   background-color: #CC0000;
   border-radius: 5px;
   border: none;
-
+  margin: 0;
 }
 
 #delete:hover {
@@ -206,7 +251,12 @@ section p{
 
 }
 
+
+
+
+
 #close {
+  cursor: pointer;
   text-decoration: none;
   color: black;
   /* margin-bottom: 10px; */
