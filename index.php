@@ -8,7 +8,7 @@ $dataFile = 'tasks.txt';
 
 $id = uniqid();
 
-$addedAt = date('Y-m-d');
+$addedAt = date('Y年m月d日');
 
 $task = '';
 
@@ -23,9 +23,9 @@ if (file_exists($dataFile)) {
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
 	if(!empty($_POST['task'])) {
 
-	
 		$task = $_POST['task'];
 
 		$DATA = [$id, $addedAt, $task];
@@ -36,21 +36,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 		}
-		else if(isset($_POST['del'])) {
+	else if(isset($_POST['del'])) {
 
 		$NEWBOARD = [];
 
 		foreach($BOARD as $DATA) {
-		if($DATA[0] !== $_POST['del']) {
-			$NEWBOARD = $DATA;
+		  if($DATA[0] !== $_POST['del']) {
+			$NEWBOARD[] = $DATA;
 
-		}
+			}
 
 
-		}
+			}
 
-		file_put_contents($dataFile, json_encode($NEWBOAD));
-		}
+			file_put_contents($dataFile, json_encode($NEWBOARD));
+			
+		} 
 
 
 	header('Location: '.$_SERVER['SCRIPT_NAME']);
@@ -85,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <tr>
 		<th>追加日</th>
 		<th>やること</th>
+		<th>　　</th>
 	</tr>
   
   </thead>
@@ -94,7 +96,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	  <?php foreach ($BOARD as $DATA) :?>
   　　<tr>
         <td><?php echo h($DATA[1])?></td>
-		<td><a class="tasks" href="#"><?php echo h($DATA[2]); ?></a></td>
+		<td><?php echo h($DATA[2]); ?>
+		</td>
+		<td>
+			<form class="delete-button" method="post">
+			<input type="hidden" name= "del" value= "<?php echo h($DATA[0]); ?>">  
+			<input id="delete" type="submit" value="削除">
+			</form>
+	    </td>
 		
 	 </tr>
 	<?php endforeach ; ?>
@@ -106,66 +115,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
 </table>
 
-<section id="modal" class="hidden">
-	<form class="modal-contents" method="post">
-		<input id="edition" type="text" value="<?php echo h($DATA[2]); ?>">
-		<input id="edit" type="submit" value="変更">
-	</form>
-	<form>
-		<input type="hidden" name= "del" value= "<?php echo h($DATA[0]); ?>">  
-		<input id="delete" type="submit" value="削除">
-	</form>
-  <p><a id="close" href="#">閉じる</a></p>
-</section>
-
-<div id="mask" class="hidden"></div>
-
-
-<script type="text/javascript">
-
-{
-
-	const tasks = document.querySelectorAll('.tasks');
-	const modal = document.getElementById('modal');
-	const mask = document.getElementById('mask');
-	const close = document.getElementById('close');
-	const edition = document.getElementById('edition');
-  
-
-
-	
-	
-	tasks.forEach(function(tasks) {
-      tasks.addEventListener('click', e => {
-		e.preventDefault;
-		edition.value = "<?php echo h($DATA[2]); ?>"
-		modal.classList.remove('hidden');
-		mask.classList.remove('hidden');
-		
-	  });
-	});
-	
-    close.addEventListener('click', e => {
-		e.preventDefault;
-		modal.classList.add('hidden');
-		mask.classList.add('hidden');
-
-
-	});
-	
-    mask.addEventListener('click', () => {
-		modal.classList.add('hidden');
-		mask.classList.add('hidden');
-
-
-	});
-
-}
 
 
 
 
-</script>
 	
 </body>
 </html>

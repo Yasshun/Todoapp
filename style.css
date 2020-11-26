@@ -129,7 +129,7 @@ form {
 
 table { 
     table-layout: fixed;
-    width: 60%;
+    width: 80%;
     font-size: 20px;
     border-collapse: collapse;
     border: 3px solid black;
@@ -145,24 +145,22 @@ table thead tr th {
 
 }
 
+
+
 table tbody tr td {
   text-align: center;
+  height: 20px;
   border-left: 3px solid black;
   border-bottom: 3px solid black;
 
 }
 
-table tbody tr td  a{
-  text-decoration: none;
-  color: black;
-  padding: 8px 8px;
-}
-
-table tbody tr td  a:hover {
-  color: grey;
-
+.delete-button{
+height: 10px;
+margin: 0 auto;
 
 }
+
 
 #nocontents {
   font-size: 20px;
@@ -172,53 +170,12 @@ table tbody tr td  a:hover {
 
 }
 
-#modal {
-  background-color: white;
-  height: 135px;
-  position: absolute;
-  top: 200px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 40%;
-  border: 3px solid black ;
-  border-radius: 15px;
-  transition: transform 0.4s;
-  z-index: 2;
-
-}
-
-
-
-#modal > input {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  /* text-align: center; */
-   margin-top: 30px;
-
-}
-
-
-
-.modal-contents {
-  text-align: center;
-  margin-top: 15px;
-
-
-}
-
-#edit {
-  color: white;
-  background-color: #006600;
-  border-radius: 5px;
-  border: none;
-
-}
 
 
 
 #delete {
+  cursor: pointer;
+  display: inline-block;
   text-align: center;
   color: white;
   background-color: #CC0000;
@@ -228,21 +185,9 @@ table tbody tr td  a:hover {
 }
 
 #delete:hover {
-  background-color: #FF6699;
-
+opacity: 0.8;
 
 }
-
-
-
-
-/* section button{
-  display: inline-block;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-
-} */
 
 
 section p{
@@ -252,16 +197,10 @@ section p{
 }
 
 
-
-
-
 #close {
   cursor: pointer;
   text-decoration: none;
   color: black;
-  /* margin-bottom: 10px; */
-
-
 
 }
 
@@ -274,19 +213,6 @@ section p{
 
 
 
-#modal.hidden {
-  /* display: block; */
-  /* text-align: center; */
-  transform: translate(0, -500px);
-  /* background-color: white; */
-  /* margin-left: auto;
-  margin-right: auto; */
-  /* width: 40%; */
-  /* position: fixed; */
-
-
-
-}
 
 #mask {
   background-color: rgba(0, 0, 0, 0.4);
